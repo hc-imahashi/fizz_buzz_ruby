@@ -16,3 +16,7 @@
     数字を入力してください：
     15
     FizzBuzz
+
+## テスト手順
+
+    $ bundle exec rspec

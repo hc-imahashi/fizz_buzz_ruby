@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require "fizz_buzz"
+
+printf("数字を入力してください：\n")
+fizz_buzz= FizzBuzz.new(gets)
+begin
+  puts fizz_buzz.response
+rescue InputError
+  puts 'エラー！！ 数字の読み込みに失敗しました。'
+end

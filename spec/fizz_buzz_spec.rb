@@ -5,20 +5,21 @@ RSpec.describe FizzBuzz do
     expect(FizzBuzz::VERSION).not_to be nil
   end
 
+  shared_examples "#response" do |in_str, out_str|
+    it (in_str.to_s+'は'+out_str.to_s+'を返す') {
+      fizzbuzz= FizzBuzz.new(in_str)
+      expect(fizzbuzz.response).to eq out_str
+    }
+  end
+
   describe "課題１−１：#responseがそのままの値を返すこと" do
-    it "'1'は'1'を返す" do
-      fizzbuzz= FizzBuzz.new('1')
-      expect(fizzbuzz.response).to eq '1'
-    end
-    it "'9999999998'は'9999999998'を返す" do
-      fizzbuzz= FizzBuzz.new('9999999998')
-      expect(fizzbuzz.response).to eq '9999999998'
-    end
+    it_behaves_like "#response", '1','1'
+    it_behaves_like "#response", '9999999998','9999999998'
   end
 
   describe "課題１−２：不正入力に対してエラー" do
     shared_examples "raise_inputerr" do |str|
-      it {
+      it (str.to_s+'ではInputError例外が発生する') {
         fizzbuzz= FizzBuzz.new(str)
         expect{fizzbuzz.response}.to raise_error(InputError)
       }
@@ -38,17 +39,16 @@ RSpec.describe FizzBuzz do
     end
     context "小数は丸められます" do
       it_behaves_like 'raise_inputerr', '.499'
-      it ('1.589') {
-        fizzbuzz= FizzBuzz.new('1.589')
-        expect(fizzbuzz.response).to eq '1'
-      }
+      it_behaves_like "#response", '1.589','1'
     end
     context "ホワイトの後ろはあっても無視" do
       it_behaves_like 'raise_inputerr', 'A 3'
-      it ('790 あいうえお') {
-        fizzbuzz= FizzBuzz.new('790 あいうえお')
-        expect(fizzbuzz.response).to eq '790'
-      }
+      it_behaves_like "#response", '790 あいうえお','790'
     end
+  end
+
+  describe "課題１−３：3の倍数の場合Fizz" do
+    it_behaves_like "#response", '3','Fizz'
+    it_behaves_like "#response", '9999999999','Fizz'
   end
 end

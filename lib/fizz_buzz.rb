@@ -9,7 +9,9 @@ class FizzBuzz
 
   def response
     raise InputError unless valid?
-    if @input_number%3 == 0
+    if @input_number%3 == 0 && @input_number%5 == 0
+      "FizzBuzz"
+    elsif @input_number%3 == 0
       "Fizz"
     elsif @input_number%5 == 0
       "Buzz"

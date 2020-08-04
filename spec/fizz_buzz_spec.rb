@@ -43,7 +43,7 @@ RSpec.describe FizzBuzz do
     end
     context "ホワイトの後ろはあっても無視" do
       it_behaves_like 'raise_inputerr', 'A 3'
-      it_behaves_like "#response", '790 あいうえお','790'
+      it_behaves_like "#response", '791 あいうえお','791'
     end
   end
 
@@ -51,4 +51,10 @@ RSpec.describe FizzBuzz do
     it_behaves_like "#response", '3','Fizz'
     it_behaves_like "#response", '9999999999','Fizz'
   end
+
+  describe "課題１−３：5の倍数の場合Buzz" do
+    it_behaves_like "#response", '5','Buzz'
+    it_behaves_like "#response", '1000000000','Buzz'
+  end
+
 end

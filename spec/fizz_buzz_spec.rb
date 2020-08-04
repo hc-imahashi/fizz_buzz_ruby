@@ -43,7 +43,7 @@ RSpec.describe FizzBuzz do
     end
     context "ホワイトの後ろはあっても無視" do
       it_behaves_like 'raise_inputerr', 'A 3'
-      it_behaves_like "#response", '790 あいうえお','790'
+      it_behaves_like "#response", '791 あいうえお','791'
     end
   end
 

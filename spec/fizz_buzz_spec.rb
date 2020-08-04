@@ -51,4 +51,10 @@ RSpec.describe FizzBuzz do
     it_behaves_like "#response", '3','Fizz'
     it_behaves_like "#response", '9999999999','Fizz'
   end
+
+  describe "課題１−３：5の倍数の場合Buzz" do
+    it_behaves_like "#response", '5','Buzz'
+    it_behaves_like "#response", '1000000000','Buzz'
+  end
+
 end

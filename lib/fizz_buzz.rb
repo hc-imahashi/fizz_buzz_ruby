@@ -9,7 +9,11 @@ class FizzBuzz
 
   def response
     raise InputError unless valid?
-    @input_number.to_s
+    if @input_number%3 == 0
+      "Fizz"
+    else
+      @input_number.to_s
+    end
   end
 
   private
